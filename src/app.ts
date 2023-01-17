@@ -55,10 +55,10 @@ function getAllBooks(): Book[] {
 const books = getAllBooks();
 
 function logFirstAvailable(books: Book[]): void {
-    const length = books.length;
+    const availableBooks = books.filter(book => book.available);
 
-    console.log('Length: ', length);
-    console.log('Book title: ', books[0].title);
+    console.log('Length: ', availableBooks.length);
+    console.log('Book title: ', availableBooks[0].title);
 }
 
 logFirstAvailable(books);
