@@ -10,13 +10,23 @@ function showHello(divName: string, name: string) {
 
 // Book
 
-type Book = {
+// type Book = {
+//     id: number;
+//     title: string;
+//     author: string;
+//     available: boolean;
+//     category: Category;
+// };
+
+interface Book {
     id: number;
     title: string;
     author: string;
     available: boolean;
     category: Category;
-};
+    pages?: number;
+    markedDamaged?: DamageLogger;
+}
 
 // Category
 
@@ -119,7 +129,7 @@ function createCustomer(name: string, age?: number, city?: string): void {
     }
 }
 
-function getBookByID(pid: number): Book {
+function getBookByID(pid: Book['id']): Book {
     const books = getAllBooks();
     return books.find(({id}) => id === pid);
 }
@@ -192,4 +202,78 @@ function bookTitleTransform(name: any): string | undefined {
 
 // const checkedOutBooks = getTitles(false);
 
+function printBook(book: Book): void {
+    const {title, author} = book;
 
+    console.log(`${title} ${author}`);
+}
+
+const myBook: Book = {
+    id: 5,
+    title: 'Colors, Backgrounds, and Gradients',
+    author: 'Eric A. Meyer',
+    available: true,
+    category: Category.CSS,
+    pages: 200,
+    markedDamaged: (reason) => console.log(`Damaged: ${reason}`)
+};
+
+printBook(myBook);
+
+myBook.markedDamaged('missing back cover');
+
+interface DamageLogger {
+    (str: string): void;
+}
+
+const logDamage: DamageLogger = myBook.markedDamaged;
+
+// console.log('missing back cover');
+
+interface Pearson {
+    name: string;
+    email: string;
+}
+
+interface Author extends Pearson {
+    numBooksPublished: number;
+}
+
+interface Librarian extends Pearson {
+    department: string;
+    assistCustomer: (custName: string, bookTitle: string) => void;
+}
+
+const favouriteAuthor: Author = {
+    name: 'Test',
+    email: 'test@email.com',
+    numBooksPublished: 100
+};
+
+const favouriteLibrarian: Librarian = {
+    name: 'Test',
+    email: 'test@email.com',
+    department: 'udhdb',
+    assistCustomer: (custName, bookTitle) => console.log('')
+};
+
+const offer: any = {
+    book: {
+        title: 'Essential TypeScript',
+    },
+};
+
+// console.log(offer?.magazine);
+// console.log(offer?.magazine?.getTitle());
+// console.log(offer?.book?.getTitle());
+// console.log(offer?.book?.authors[0]);
+
+type BookProperties = keyof Book;
+
+function getProperty(book: Book, property: keyof Book): any {
+    return books[property];
+}
+
+console.log('Property: ', getProperty(myBook, 'title'));
+console.log('Property: ', getProperty(myBook, 'markedDamaged'));
+// console.log('Property: ', getProperty(myBook, 'isbn'));
