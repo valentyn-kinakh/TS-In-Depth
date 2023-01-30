@@ -1,5 +1,7 @@
 /* eslint-disable no-redeclare */
 
+// eslint-disable-next-line no-underscore-dangle
+
 showHello('greeting', 'TypeScript');
 
 // Task 01 & 02
@@ -129,7 +131,7 @@ function createCustomer(name: string, age?: number, city?: string): void {
     }
 }
 
-function getBookByID(pid: Book['id']): Book {
+function getBookByID(pid: Book['id']): BookOrUndefined {
     const books = getAllBooks();
     return books.find(({id}) => id === pid);
 }
@@ -250,12 +252,12 @@ const favouriteAuthor: Author = {
     numBooksPublished: 100
 };
 
-const favouriteLibrarian: Librarian = {
-    name: 'Test',
-    email: 'test@email.com',
-    department: 'udhdb',
-    assistCustomer: (custName, bookTitle) => console.log('')
-};
+// const favouriteLibrarian: Librarian = {
+//     name: 'Test',
+//     email: 'test@email.com',
+//     department: 'udhdb',
+//     assistCustomer: (custName, bookTitle) => console.log('')
+// };
 
 const offer: any = {
     book: {
@@ -270,10 +272,127 @@ const offer: any = {
 
 type BookProperties = keyof Book;
 
-function getProperty(book: Book, property: keyof Book): any {
+function getProperty(book: Book, property: BookProperties): any {
     return books[property];
 }
 
-console.log('Property: ', getProperty(myBook, 'title'));
-console.log('Property: ', getProperty(myBook, 'markedDamaged'));
+// console.log('Property: ', getProperty(myBook, 'title'));
+// console.log('Property: ', getProperty(myBook, 'markedDamaged'));
 // console.log('Property: ', getProperty(myBook, 'isbn'));
+
+abstract class ReferenceItem {
+    // title: string;
+    // year: number;
+    //
+    // constructor(newTitle: string, newYear: number) {
+    //     console.log('Crete new reference item');
+    //
+    //     this.title = newTitle;
+    //     this.year = newYear;
+    // }
+
+    private _publisher: string;
+    #id: number;
+
+
+    static department: string = 'Research dep...';
+
+    protected constructor(id: number, public title: string, protected year: number) {
+        this.#id = id;
+        console.log('Crete new reference item');
+    }
+
+    get publisher(): string {
+        // eslint-disable-next-line no-underscore-dangle
+        return this._publisher.toUpperCase();
+    }
+
+    set publisher(newPublisher: string) {
+        // eslint-disable-next-line no-underscore-dangle
+        this._publisher = newPublisher;
+    }
+
+    printItem(): void {
+        console.log(`${this.title} was published in ${this.year}, dep: ${ReferenceItem.department}`);
+    }
+
+    getID(): number {
+        return this.#id;
+    }
+
+    abstract printCitation(): void;
+}
+
+
+class Encyclopedia extends ReferenceItem {
+    constructor(id: number, title: string, year: number, public edition: number) {
+        super(id, title, year);
+    }
+
+    override printItem(): void {
+        super.printItem();
+        console.log(`Edition: ${this.edition} ${this.year}`);
+    }
+
+    printCitation(): void {
+        console.log(`${this.title} - ${this.year}`);
+    }
+}
+
+const ref: ReferenceItem = new Encyclopedia(1, 'Typescript', 2023, 2);
+ref.publisher = 'test_publisher';
+console.log(ref);
+ref.printItem();
+
+console.log(ref.publisher);
+
+ref.getID();
+
+
+const refBook = new Encyclopedia(2, 'Js', 2020, 4);
+console.log(refBook);
+
+refBook.printCitation();
+
+
+class UniversityLibrarian implements Librarian {
+    constructor(public name, public email, public department) {
+    }
+
+    assistCustomer(custName: string, bookTitle: string): void {
+        console.log(`${this.name} is assisting ${custName} with book ${bookTitle}`);
+    }
+}
+
+const favouriteLibrarian = new UniversityLibrarian('test', 'test@email.com', 'dep1');
+favouriteLibrarian.assistCustomer('customer', 'book title');
+
+type PersonBook = Pearson & Book;
+
+const personBook: PersonBook = {
+    name: '',
+    email: '',
+    id: 3,
+    title: '',
+    author: '',
+    available: true,
+    category: Category.JavaScript
+};
+
+console.log(personBook);
+
+type BookOrUndefined = Book | undefined;
+
+type TOptions = {
+    duration?: number;
+    speed?: number;
+};
+
+function setDefaultConfig(options: TOptions): TOptions {
+    options.duration ??= 10.9;
+    options.speed ??= 225;
+
+    return options;
+}
+
+console.log(setDefaultConfig({}));
