@@ -6,11 +6,12 @@
 
 // Task 01 & 02
 
-import {getAllBooks, setDefaultConfig} from './functions';
+import {getAllBooks, printRefBook, setDefaultConfig} from './functions';
 import {Author, Book, Logger} from './interfaces';
 import {Category} from './enum';
 import {BookProperties, PersonBook, TOptions} from './types';
 import {ReferenceItem, UniversityLibrarian} from './classes';
+import {Encyclopedia as ReferenceBook} from './classes/encyclopedia';
 
 const books = getAllBooks();
 
@@ -57,7 +58,7 @@ const myBook: Book = {
 
 // printBook(myBook);
 
-myBook.markedDamaged('missing back cover');
+// myBook.markedDamaged('missing back cover');
 
 
 const logDamage: Logger = myBook.markedDamaged;
@@ -97,25 +98,13 @@ function getProperty(book: Book, property: BookProperties): any {
 // console.log('Property: ', getProperty(myBook, 'isbn'));
 
 
-class Encyclopedia extends ReferenceItem {
-    constructor(id: number, title: string, year: number, public edition: number) {
-        super(id, title, year);
-    }
 
-    override printItem(): void {
-        super.printItem();
-        console.log(`Edition: ${this.edition} ${this.year}`);
-    }
-
-    printCitation(): void {
-        console.log(`${this.title} - ${this.year}`);
-    }
-}
-
-// const ref: ReferenceItem = new Encyclopedia(1, 'Typescript', 2023, 2);
+const ref: ReferenceItem = new ReferenceBook(1, 'Typescript', 2023, 2);
 // ref.publisher = 'test_publisher';
 // console.log(ref);
 // ref.printItem();
+
+printRefBook(ref);
 
 // console.log(ref.publisher);
 //
@@ -129,7 +118,8 @@ class Encyclopedia extends ReferenceItem {
 
 
 const favouriteLibrarian = new UniversityLibrarian('test', 'test@email.com', 'dep1');
-favouriteLibrarian.assistCustomer('customer', 'book title');
+// favouriteLibrarian.assistCustomer('customer', 'book title');
+printRefBook(favouriteLibrarian);
 
 // const personBook: PersonBook = {
 //     name: '',

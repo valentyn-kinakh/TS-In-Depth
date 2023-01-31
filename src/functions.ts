@@ -5,12 +5,12 @@
 import {Category} from './enum';
 import {Book} from './interfaces';
 import {BookOrUndefined, TOptions} from './types';
+import {ReferenceItem} from './classes';
 
 export function showHello(divName: string, name: string) {
     const elt = document.getElementById(divName);
     elt.innerText = `Hello from ${name}`;
 }
-
 
 
 export function getAllBooks(): readonly Book[] {
@@ -159,4 +159,17 @@ export function setDefaultConfig(options: TOptions): TOptions {
     options.speed ??= 225;
 
     return options;
+}
+
+export function assertRefBookInstance(condition: any): asserts condition is true {
+    if (!condition) {
+        throw new Error('It is not an instance of RefBook');
+    }
+}
+
+export function printRefBook(data: any): void {
+    // @ts-ignore
+    if (assertRefBookInstance('')) {
+        (data as ReferenceItem).printItem();
+    }
 }
