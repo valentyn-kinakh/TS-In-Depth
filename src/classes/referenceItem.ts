@@ -1,6 +1,4 @@
-import * as Interfaces from './interfaces';
-
-abstract class ReferenceItem {
+export abstract class ReferenceItem {
     // title: string;
     // year: number;
     //
@@ -42,14 +40,3 @@ abstract class ReferenceItem {
 
     abstract printCitation(): void;
 }
-
-class UniversityLibrarian implements Interfaces.Librarian {
-    constructor(public name, public email, public department) {
-    }
-
-    assistCustomer(custName: string, bookTitle: string): void {
-        console.log(`${this.name} is assisting ${custName} with book ${bookTitle}`);
-    }
-}
-
-export {ReferenceItem, UniversityLibrarian};

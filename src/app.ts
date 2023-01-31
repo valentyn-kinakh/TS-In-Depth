@@ -10,7 +10,7 @@ import {getAllBooks, printRefBook, setDefaultConfig} from './functions';
 import {Author, Book, Logger} from './interfaces';
 import {Category} from './enum';
 import {BookProperties, PersonBook, TOptions} from './types';
-import {ReferenceItem, UniversityLibrarian} from './classes';
+import {ReferenceItem, UniversityLibrarian} from './classes/';
 import {Encyclopedia as ReferenceBook} from './classes/encyclopedia';
 
 const books = getAllBooks();

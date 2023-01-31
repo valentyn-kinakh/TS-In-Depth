@@ -5,7 +5,7 @@
 import {Category} from './enum';
 import {Book} from './interfaces';
 import {BookOrUndefined, TOptions} from './types';
-import {ReferenceItem} from './classes';
+import {ReferenceItem} from './classes/classes';
 
 export function showHello(divName: string, name: string) {
     const elt = document.getElementById(divName);
