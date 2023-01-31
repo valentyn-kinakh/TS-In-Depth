@@ -6,7 +6,7 @@
 
 // Task 01 & 02
 
-import {getAllBooks} from './functions';
+import {getAllBooks, setDefaultConfig} from './functions';
 import {Author, Book, Logger} from './interfaces';
 import {Category} from './enum';
 import {BookProperties, PersonBook, TOptions} from './types';
@@ -112,44 +112,35 @@ class Encyclopedia extends ReferenceItem {
     }
 }
 
-const ref: ReferenceItem = new Encyclopedia(1, 'Typescript', 2023, 2);
-ref.publisher = 'test_publisher';
-console.log(ref);
-ref.printItem();
+// const ref: ReferenceItem = new Encyclopedia(1, 'Typescript', 2023, 2);
+// ref.publisher = 'test_publisher';
+// console.log(ref);
+// ref.printItem();
 
-console.log(ref.publisher);
+// console.log(ref.publisher);
+//
+// ref.getID();
 
-ref.getID();
 
-
-const refBook = new Encyclopedia(2, 'Js', 2020, 4);
-console.log(refBook);
-
-refBook.printCitation();
+// const refBook = new Encyclopedia(2, 'Js', 2020, 4);
+// console.log(refBook);
+//
+// refBook.printCitation();
 
 
 const favouriteLibrarian = new UniversityLibrarian('test', 'test@email.com', 'dep1');
 favouriteLibrarian.assistCustomer('customer', 'book title');
 
-const personBook: PersonBook = {
-    name: '',
-    email: '',
-    id: 3,
-    title: '',
-    author: '',
-    available: true,
-    category: Category.JavaScript
-};
+// const personBook: PersonBook = {
+//     name: '',
+//     email: '',
+//     id: 3,
+//     title: '',
+//     author: '',
+//     available: true,
+//     category: Category.JavaScript
+// };
+//
+// console.log(personBook);
 
-console.log(personBook);
-
-
-
-function setDefaultConfig(options: TOptions): TOptions {
-    options.duration ??= 10.9;
-    options.speed ??= 225;
-
-    return options;
-}
-
-console.log(setDefaultConfig({}));
+// console.log(setDefaultConfig({}));
