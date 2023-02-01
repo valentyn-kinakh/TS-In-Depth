@@ -5,6 +5,7 @@
 import {Category} from './enum';
 import {Book} from './interfaces';
 import {BookOrUndefined, TOptions} from './types';
+import {ReferenceItem} from "./classes";
 
 export function showHello(divName: string, name: string) {
     const elt = document.getElementById(divName);
@@ -160,15 +161,17 @@ export function setDefaultConfig(options: TOptions): TOptions {
     return options;
 }
 
-export function assertRefBookInstance(condition: any): asserts condition is true {
+export function assertRefBookInstance(condition: any): asserts condition {
     if (!condition) {
         throw new Error('It is not an instance of RefBook');
     }
 }
 
-// export function printRefBook(data: any): void {
-//     // @ts-ignore
-//     if (assertRefBookInstance('')) {
-//         (data as ReferenceItem).printItem();
-//     }
-// }
+export function printRefBook(data: any): void {
+    assertRefBookInstance(data instanceof ReferenceItem);
+    data.printItem();
+}
+
+export function purge<T>(inventory: Array<T>): T[] {
+    return inventory.slice(2);
+}

@@ -6,12 +6,13 @@
 
 // Task 01 & 02
 
-import {getAllBooks, setDefaultConfig} from './functions';
+import {getAllBooks, printRefBook, purge, setDefaultConfig} from './functions';
 import {Author, Book, Logger} from './interfaces';
 import {Category} from './enum';
 import {BookProperties, PersonBook, TOptions} from './types';
 import {ReferenceItem, UniversityLibrarian} from './classes/';
 import {Encyclopedia as ReferenceBook} from './classes/encyclopedia';
+import {Library} from './classes/library';
 
 const books = getAllBooks();
 
@@ -134,7 +135,7 @@ const favouriteLibrarian = new UniversityLibrarian('test', 'test@email.com', 'de
 // console.log(setDefaultConfig({}));
 
 
-const flag = true;
+// const flag = true;
 
 // if (flag) {
 //     import('./classes').then(module => {
@@ -144,9 +145,13 @@ const flag = true;
 //     }).catch(err => console.error(err));
 // }
 
-if (flag) {
-    const module = await import('./classes');
-    const reader = new module.Reader();
-    reader.name = 'User';
-    console.log(reader);
-}
+// if (flag) {
+//     const module = await import('./classes');
+//     const reader = new module.Reader();
+//     reader.name = 'User';
+//     console.log(reader);
+// }
+
+// let lib: Library = new Library();
+
+// const r: Book[] = purge(inverntory);

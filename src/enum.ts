@@ -5,7 +5,8 @@ enum Category {
     CSS = 'CSS',
     HTML = 'HTML',
     TypeScript = 'TypeScript',
-    Angular = 'Angular'
+    Angular = 'Angular',
+    SoftWare = 'Sofwarre'
 }
 
 export {Category};
