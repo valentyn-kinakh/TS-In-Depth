@@ -5,7 +5,6 @@
 import {Category} from './enum';
 import {Book} from './interfaces';
 import {BookOrUndefined, TOptions} from './types';
-import {ReferenceItem} from './classes/classes';
 
 export function showHello(divName: string, name: string) {
     const elt = document.getElementById(divName);
@@ -167,9 +166,9 @@ export function assertRefBookInstance(condition: any): asserts condition is true
     }
 }
 
-export function printRefBook(data: any): void {
-    // @ts-ignore
-    if (assertRefBookInstance('')) {
-        (data as ReferenceItem).printItem();
-    }
-}
+// export function printRefBook(data: any): void {
+//     // @ts-ignore
+//     if (assertRefBookInstance('')) {
+//         (data as ReferenceItem).printItem();
+//     }
+// }

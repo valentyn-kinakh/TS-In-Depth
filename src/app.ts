@@ -6,7 +6,7 @@
 
 // Task 01 & 02
 
-import {getAllBooks, printRefBook, setDefaultConfig} from './functions';
+import {getAllBooks, setDefaultConfig} from './functions';
 import {Author, Book, Logger} from './interfaces';
 import {Category} from './enum';
 import {BookProperties, PersonBook, TOptions} from './types';
@@ -19,7 +19,6 @@ const books = getAllBooks();
 //
 //
 // logBookTitles(getBookTitlesByCategory(Category.JavaScript));
-
 
 
 // console.log('Title reverse: ',bookTitleTransform('test'));
@@ -98,13 +97,12 @@ function getProperty(book: Book, property: BookProperties): any {
 // console.log('Property: ', getProperty(myBook, 'isbn'));
 
 
-
 const ref: ReferenceItem = new ReferenceBook(1, 'Typescript', 2023, 2);
 // ref.publisher = 'test_publisher';
 // console.log(ref);
 // ref.printItem();
 
-printRefBook(ref);
+// printRefBook(ref);
 
 // console.log(ref.publisher);
 //
@@ -119,7 +117,7 @@ printRefBook(ref);
 
 const favouriteLibrarian = new UniversityLibrarian('test', 'test@email.com', 'dep1');
 // favouriteLibrarian.assistCustomer('customer', 'book title');
-printRefBook(favouriteLibrarian);
+// printRefBook(favouriteLibrarian);
 
 // const personBook: PersonBook = {
 //     name: '',
@@ -134,3 +132,21 @@ printRefBook(favouriteLibrarian);
 // console.log(personBook);
 
 // console.log(setDefaultConfig({}));
+
+
+const flag = true;
+
+// if (flag) {
+//     import('./classes').then(module => {
+//         const reader = new module.Reader();
+//         reader.name = 'User';
+//         console.log(reader);
+//     }).catch(err => console.error(err));
+// }
+
+if (flag) {
+    const module = await import('./classes');
+    const reader = new module.Reader();
+    reader.name = 'User';
+    console.log(reader);
+}
