@@ -7,10 +7,10 @@
 // Task 01 & 02
 
 import {getAllBooks, printRefBook, purge, setDefaultConfig} from './functions';
-import {Author, Book, Logger} from './interfaces';
+import {Author, Book, Logger, Magazine} from './interfaces';
 import {Category} from './enum';
 import {BookProperties, PersonBook, TOptions} from './types';
-import {ReferenceItem, UniversityLibrarian} from './classes/';
+import Shelf, {ReferenceItem, UniversityLibrarian} from './classes/';
 import {Encyclopedia as ReferenceBook} from './classes/encyclopedia';
 import {Library} from './classes/library';
 
@@ -152,6 +152,36 @@ const favouriteLibrarian = new UniversityLibrarian('test', 'test@email.com', 'de
 //     console.log(reader);
 // }
 
+const inverntory = [
+    { id: 10, title: 'The C Programming Language', author: 'K & R', available: true, category: Category.JavaScript },
+    { id: 11, title: 'Code Complete', author: 'Steve McConnell', available: true, category: Category.TypeScript },
+    { id: 12, title: '8-Bit Graphics with Cobol', author: 'A. B.', available: true, category: Category.HTML },
+    { id: 13, title: 'Cool autoexec.bat Scripts!', author: 'C. D.', available: true, category: Category.Angular }
+];
+
+const magazines = [
+    { title: 'Programming Language Monthly', publisher: 'Code Mags' },
+    { title: 'Literary Fiction Quarterly', publisher: 'College Press' },
+    { title: 'Five Points', publisher: 'GSU' }
+];
+
+
+
 // let lib: Library = new Library();
 
 // const r: Book[] = purge(inverntory);
+
+const bookShelf = new Shelf<Book>();
+inverntory.forEach(item => bookShelf.add(item));
+
+// console.log(bookShelf.getFirst());
+
+const magazineShelf = new Shelf<Magazine>();
+
+magazines.forEach(item => magazineShelf.add(item));
+
+// console.log(magazineShelf.getFirst());
+
+magazineShelf.printTitles();
+
+console.log(magazineShelf.find('Five Points'));

@@ -28,4 +28,13 @@ interface Librarian extends Pearson {
     assistCustomer: (custName: string, bookTitle: string) => void;
 }
 
-export {Book, Author, Pearson, Librarian, DamageLogger as Logger};
+interface Magazine {
+    title: string;
+    publisher: string;
+}
+
+interface ShelfItem {
+    title: string;
+}
+
+export {Book, Author, Pearson, Librarian, DamageLogger as Logger, Magazine, ShelfItem};
