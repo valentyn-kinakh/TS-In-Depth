@@ -5,7 +5,7 @@
 import {Category} from './enum';
 import {Book} from './interfaces';
 import {BookOrUndefined, TOptions} from './types';
-import {ReferenceItem} from "./classes";
+import {ReferenceItem} from './classes';
 
 export function showHello(divName: string, name: string) {
     const elt = document.getElementById(divName);
@@ -174,4 +174,10 @@ export function printRefBook(data: any): void {
 
 export function purge<T>(inventory: Array<T>): T[] {
     return inventory.slice(2);
+}
+
+export function getObjectProperty<TObject extends object, TKey extends keyof TObject>(object: TObject, prop: TKey): TObject[TKey] | string {
+    const value = object[prop];
+
+    return typeof value === 'function' ? value.name : value;
 }
