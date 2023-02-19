@@ -11,7 +11,7 @@ import {Author, Book, Logger, Magazine} from './interfaces';
 import {Category} from './enum';
 import {BookProperties, BookRequiredFields, CreateCustomerFunctionType, UpdatedBook} from './types';
 import Shelf, {ReferenceItem, UniversityLibrarian} from './classes/';
-import {Encyclopedia as ReferenceBook} from './classes/encyclopedia';
+import {Encyclopedia, Encyclopedia as ReferenceBook} from './classes/encyclopedia';
 
 const books = getAllBooks();
 
@@ -203,8 +203,12 @@ const books = getAllBooks();
 //
 // createCustomer(...params);
 
-const ul = new UniversityLibrarian();
-console.log(ul);
+// const ul = new UniversityLibrarian();
+// console.log(ul);
+//
+// Object.getPrototypeOf(ul).assistFaculty = null;
+// Object.getPrototypeOf(ul).teachCommunity = null;
 
-Object.getPrototypeOf(ul).assistFaculty = null;
-Object.getPrototypeOf(ul).teachCommunity = null;
+// const encyclopedia = new Encyclopedia(1, 'Title', 2000, 1);
+//
+// encyclopedia.printItem();
