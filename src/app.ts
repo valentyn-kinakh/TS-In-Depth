@@ -184,21 +184,21 @@ const favouriteLibrarian = new UniversityLibrarian('test', 'test@email.com', 'de
 //
 // console.log(magazineShelf.find('Five Points'));
 
-const bookRequiredFields: BookRequiredFields = {
-    id: 1,
-    author: 'Test',
-    available: false,
-    category: Category.HTML,
-    markedDamaged: null,
-    pages: 200,
-    title: 'Titlle'
-};
-
-const updatedBook: UpdatedBook = {
-    available: true
-};
-
-
-const params: Parameters<CreateCustomerFunctionType> = ['Name', 30, 'Lviv'];
-
-createCustomer(...params);
+// const bookRequiredFields: BookRequiredFields = {
+//     id: 1,
+//     author: 'Test',
+//     available: false,
+//     category: Category.HTML,
+//     markedDamaged: null,
+//     pages: 200,
+//     title: 'Titlle'
+// };
+//
+// const updatedBook: UpdatedBook = {
+//     available: true
+// };
+//
+//
+// const params: Parameters<CreateCustomerFunctionType> = ['Name', 30, 'Lviv'];
+//
+// createCustomer(...params);
