@@ -205,3 +205,6 @@ const books = getAllBooks();
 
 const ul = new UniversityLibrarian();
 console.log(ul);
+
+Object.getPrototypeOf(ul).assistFaculty = null;
+Object.getPrototypeOf(ul).teachCommunity = null;

@@ -26,3 +26,10 @@ export function logger<TFunc extends Function>(constructor: TFunc): TFunc {
 
     return newConstructor as TFunc;
 }
+
+export function writeable(isWritable: boolean) {
+    return function (target: object | Function, methodName: string, descriptor: PropertyDescriptor): PropertyDescriptor {
+        descriptor.writable = isWritable;
+        return descriptor;
+    };
+}
