@@ -20,7 +20,7 @@ export default class Shelf<T extends ShelfItem> {
     }
 }
 
-export class Shelf2<T extends (Book | Magazine)> {
+export class Shelf2<T extends (Book & Magazine)> {
     private items: T[] = [];
 
     add(item: T): void {

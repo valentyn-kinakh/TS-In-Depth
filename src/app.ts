@@ -6,13 +6,12 @@
 
 // Task 01 & 02
 
-import {getAllBooks, printRefBook, purge, setDefaultConfig} from './functions';
+import {createCustomer, getAllBooks} from './functions';
 import {Author, Book, Logger, Magazine} from './interfaces';
 import {Category} from './enum';
-import {BookProperties, PersonBook, TOptions} from './types';
+import {BookProperties, BookRequiredFields, CreateCustomerFunctionType, UpdatedBook} from './types';
 import Shelf, {ReferenceItem, UniversityLibrarian} from './classes/';
 import {Encyclopedia as ReferenceBook} from './classes/encyclopedia';
-import {Library} from './classes/library';
 
 const books = getAllBooks();
 
@@ -46,30 +45,30 @@ const books = getAllBooks();
 // const checkedOutBooks = getTitles(false);
 
 
-const myBook: Book = {
-    id: 5,
-    title: 'Colors, Backgrounds, and Gradients',
-    author: 'Eric A. Meyer',
-    available: true,
-    category: Category.CSS,
-    pages: 200,
-    markedDamaged: (reason) => console.log(`Damaged: ${reason}`)
-};
+// const myBook: Book = {
+//     id: 5,
+//     title: 'Colors, Backgrounds, and Gradients',
+//     author: 'Eric A. Meyer',
+//     available: true,
+//     category: Category.CSS,
+//     pages: 200,
+//     markedDamaged: (reason) => console.log(`Damaged: ${reason}`)
+// };
 
 // printBook(myBook);
 
 // myBook.markedDamaged('missing back cover');
 
-
-const logDamage: Logger = myBook.markedDamaged;
+//
+// const logDamage: Logger = myBook.markedDamaged;
 
 // console.log('missing back cover');
 
-const favouriteAuthor: Author = {
-    name: 'Test',
-    email: 'test@email.com',
-    numBooksPublished: 100
-};
+// const favouriteAuthor: Author = {
+//     name: 'Test',
+//     email: 'test@email.com',
+//     numBooksPublished: 100
+// };
 
 // const favouriteLibrarian: Librarian = {
 //     name: 'Test',
@@ -78,27 +77,27 @@ const favouriteAuthor: Author = {
 //     assistCustomer: (custName, bookTitle) => console.log('')
 // };
 
-const offer: any = {
-    book: {
-        title: 'Essential TypeScript',
-    },
-};
+// const offer: any = {
+//     book: {
+//         title: 'Essential TypeScript',
+//     },
+// };
 
 // console.log(offer?.magazine);
 // console.log(offer?.magazine?.getTitle());
 // console.log(offer?.book?.getTitle());
 // console.log(offer?.book?.authors[0]);
 
-function getProperty(book: Book, property: BookProperties): any {
-    return books[property];
-}
+// function getProperty(book: Book, property: BookProperties): any {
+//     return books[property];
+// }
 
 // console.log('Property: ', getProperty(myBook, 'title'));
 // console.log('Property: ', getProperty(myBook, 'markedDamaged'));
 // console.log('Property: ', getProperty(myBook, 'isbn'));
 
 
-const ref: ReferenceItem = new ReferenceBook(1, 'Typescript', 2023, 2);
+// const ref: ReferenceItem = new ReferenceBook(1, 'Typescript', 2023, 2);
 // ref.publisher = 'test_publisher';
 // console.log(ref);
 // ref.printItem();
@@ -152,36 +151,54 @@ const favouriteLibrarian = new UniversityLibrarian('test', 'test@email.com', 'de
 //     console.log(reader);
 // }
 
-const inverntory = [
-    { id: 10, title: 'The C Programming Language', author: 'K & R', available: true, category: Category.JavaScript },
-    { id: 11, title: 'Code Complete', author: 'Steve McConnell', available: true, category: Category.TypeScript },
-    { id: 12, title: '8-Bit Graphics with Cobol', author: 'A. B.', available: true, category: Category.HTML },
-    { id: 13, title: 'Cool autoexec.bat Scripts!', author: 'C. D.', available: true, category: Category.Angular }
-];
-
-const magazines = [
-    { title: 'Programming Language Monthly', publisher: 'Code Mags' },
-    { title: 'Literary Fiction Quarterly', publisher: 'College Press' },
-    { title: 'Five Points', publisher: 'GSU' }
-];
-
+// const inverntory = [
+//     {id: 10, title: 'The C Programming Language', author: 'K & R', available: true, category: Category.JavaScript},
+//     {id: 11, title: 'Code Complete', author: 'Steve McConnell', available: true, category: Category.TypeScript},
+//     {id: 12, title: '8-Bit Graphics with Cobol', author: 'A. B.', available: true, category: Category.HTML},
+//     {id: 13, title: 'Cool autoexec.bat Scripts!', author: 'C. D.', available: true, category: Category.Angular}
+// ];
+//
+// const magazines = [
+//     {title: 'Programming Language Monthly', publisher: 'Code Mags'},
+//     {title: 'Literary Fiction Quarterly', publisher: 'College Press'},
+//     {title: 'Five Points', publisher: 'GSU'}
+// ];
 
 
 // let lib: Library = new Library();
 
 // const r: Book[] = purge(inverntory);
 
-const bookShelf = new Shelf<Book>();
-inverntory.forEach(item => bookShelf.add(item));
+// const bookShelf = new Shelf<Book>();
+// inverntory.forEach(item => bookShelf.add(item));
 
 // console.log(bookShelf.getFirst());
 
-const magazineShelf = new Shelf<Magazine>();
-
-magazines.forEach(item => magazineShelf.add(item));
+// const magazineShelf = new Shelf<Magazine>();
+//
+// magazines.forEach(item => magazineShelf.add(item));
 
 // console.log(magazineShelf.getFirst());
 
-magazineShelf.printTitles();
+// magazineShelf.printTitles();
+//
+// console.log(magazineShelf.find('Five Points'));
 
-console.log(magazineShelf.find('Five Points'));
+const bookRequiredFields: BookRequiredFields = {
+    id: 1,
+    author: 'Test',
+    available: false,
+    category: Category.HTML,
+    markedDamaged: null,
+    pages: 200,
+    title: 'Titlle'
+};
+
+const updatedBook: UpdatedBook = {
+    available: true
+};
+
+
+const params: Parameters<CreateCustomerFunctionType> = ['Name', 30, 'Lviv'];
+
+createCustomer(...params);
