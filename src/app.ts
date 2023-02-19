@@ -115,7 +115,7 @@ const books = getAllBooks();
 // refBook.printCitation();
 
 
-const favouriteLibrarian = new UniversityLibrarian('test', 'test@email.com', 'dep1');
+// const favouriteLibrarian = new UniversityLibrarian('test', 'test@email.com', 'dep1');
 // favouriteLibrarian.assistCustomer('customer', 'book title');
 // printRefBook(favouriteLibrarian);
 
@@ -202,3 +202,6 @@ const favouriteLibrarian = new UniversityLibrarian('test', 'test@email.com', 'de
 // const params: Parameters<CreateCustomerFunctionType> = ['Name', 30, 'Lviv'];
 //
 // createCustomer(...params);
+
+const ul = new UniversityLibrarian();
+console.log(ul);
