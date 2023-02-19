@@ -212,3 +212,7 @@ const books = getAllBooks();
 // const encyclopedia = new Encyclopedia(1, 'Title', 2000, 1);
 //
 // encyclopedia.printItem();
+
+const ul = new UniversityLibrarian();
+
+ul.assistCustomer('Boris', 'Learn js');
