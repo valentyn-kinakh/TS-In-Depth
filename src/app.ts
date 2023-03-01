@@ -6,12 +6,8 @@
 
 // Task 01 & 02
 
-import {createCustomer, getAllBooks} from './functions';
-import {Author, Book, Logger, Magazine} from './interfaces';
+import {getAllBooks, logSearchResults} from './functions';
 import {Category} from './enum';
-import {BookProperties, BookRequiredFields, CreateCustomerFunctionType, UpdatedBook} from './types';
-import Shelf, {ReferenceItem, UniversityLibrarian} from './classes/';
-import {Encyclopedia, Encyclopedia as ReferenceBook} from './classes/encyclopedia';
 
 const books = getAllBooks();
 
@@ -218,3 +214,14 @@ const books = getAllBooks();
 // ul.assistCustomer('Boris', 'Learn js');
 
 // const encyclopedia = new Encyclopedia(1, 'Title', 2000, 1);
+
+// console.log('Begin');
+// getBooksByCategory(Category.JavaScript, logCategorySearch);
+
+// console.log('Begin');
+// getBooksByCategoryPromise(Category.JavaScript).then(titles => console.log(titles)).catch(reason => console.log(reason));
+// console.log('Eng');
+
+console.log('Begin');
+logSearchResults(Category.JavaScript).catch(reason => console.log(reason));
+console.log('Eng');
